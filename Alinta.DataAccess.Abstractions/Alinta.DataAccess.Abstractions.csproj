@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Alinta.DataAccess.Abstractions\Alinta.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\Alinta.Core\Alinta.Core.csproj" />
     <ProjectReference Include="..\Alinta.DataAccess.Models\Alinta.DataAccess.Models.csproj" />
   </ItemGroup>
 
