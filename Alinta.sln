@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4D501673-769F-42DD-9052-7D3FF50B257A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9595A941-D484-4B04-9ECC-04787553903D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{C4100FC6-9C48-463F-9EDB-92276E562263}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.WebApi", "Alinta.WebApi\Alinta.WebApi.csproj", "{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.Services", "Alinta.Services\Alinta.Services.csproj", "{24AABD89-C1B4-4067-9900-2498CDD235A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.EntityFramework", "Alinta.DataAccess.EntityFramework\Alinta.DataAccess.EntityFramework.csproj", "{F21C6152-1824-41E7-BF22-E1C7D90FB457}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24AABD89-C1B4-4067-9900-2498CDD235A8} = {4D501673-769F-42DD-9052-7D3FF50B257A}
+		{F21C6152-1824-41E7-BF22-E1C7D90FB457} = {C4100FC6-9C48-463F-9EDB-92276E562263}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D0676B0-7121-4555-96E7-8BE4CD22DE92}
+	EndGlobalSection
+EndGlobal
