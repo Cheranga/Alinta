@@ -9,25 +9,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9595A941
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{C4100FC6-9C48-463F-9EDB-92276E562263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.WebApi", "Alinta.WebApi\Alinta.WebApi.csproj", "{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.WebApi", "Alinta.WebApi\Alinta.WebApi.csproj", "{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.Services", "Alinta.Services\Alinta.Services.csproj", "{24AABD89-C1B4-4067-9900-2498CDD235A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.DataAccess.EntityFramework", "Alinta.DataAccess.EntityFramework\Alinta.DataAccess.EntityFramework.csproj", "{F21C6152-1824-41E7-BF22-E1C7D90FB457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.EntityFramework", "Alinta.DataAccess.EntityFramework\Alinta.DataAccess.EntityFramework.csproj", "{F21C6152-1824-41E7-BF22-E1C7D90FB457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.DataAccess.Abstractions", "Alinta.DataAccess.Abstractions\Alinta.DataAccess.Abstractions.csproj", "{B2815437-03CD-4152-BBC0-828A3662998A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.Abstractions", "Alinta.DataAccess.Abstractions\Alinta.DataAccess.Abstractions.csproj", "{B2815437-03CD-4152-BBC0-828A3662998A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.Models", "Alinta.DataAccess.Models\Alinta.DataAccess.Models.csproj", "{852E7046-F153-4261-B2F9-68019E9DF99F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.DataAccess.Models", "Alinta.DataAccess.Models\Alinta.DataAccess.Models.csproj", "{852E7046-F153-4261-B2F9-68019E9DF99F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{45831A0C-6D02-4DAA-A145-BA965992C2C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FEB709D7-5E62-43E1-9274-108A4BB6EF3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.Core", "Alinta.Core\Alinta.Core.csproj", "{9CB3FEE0-1638-4269-B951-6F2EBC94F631}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.Core", "Alinta.Core\Alinta.Core.csproj", "{9CB3FEE0-1638-4269-B951-6F2EBC94F631}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.EntityFramework.UnitTests", "Alinta.DataAccess.EntityFramework.UnitTests\Alinta.DataAccess.EntityFramework.UnitTests.csproj", "{430016E0-9A36-49B0-A523-B039B5068CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.DataAccess.EntityFramework.UnitTests", "Alinta.DataAccess.EntityFramework.UnitTests\Alinta.DataAccess.EntityFramework.UnitTests.csproj", "{430016E0-9A36-49B0-A523-B039B5068CAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{57E25B0C-BD0F-43B7-AAB4-4879ADE41D18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.Services.Abstractions", "Alinta.Services.Abstractions\Alinta.Services.Abstractions.csproj", "{451B78CF-D559-487A-B1AB-1FE86A82C658}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.Services", "Alinta.Services\Alinta.Services.csproj", "{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alinta.Services.UnitTests", "Alinta.Services.UnitTests\Alinta.Services.UnitTests.csproj", "{71DB936C-55C8-4EFC-B435-A95CDABE32A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12D08CB1-61B8-4C13-8160-231EF765408F}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +48,6 @@ Global
 		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24AABD89-C1B4-4067-9900-2498CDD235A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F21C6152-1824-41E7-BF22-E1C7D90FB457}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,18 +68,32 @@ Global
 		{430016E0-9A36-49B0-A523-B039B5068CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{430016E0-9A36-49B0-A523-B039B5068CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{430016E0-9A36-49B0-A523-B039B5068CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451B78CF-D559-487A-B1AB-1FE86A82C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451B78CF-D559-487A-B1AB-1FE86A82C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451B78CF-D559-487A-B1AB-1FE86A82C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451B78CF-D559-487A-B1AB-1FE86A82C658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DB936C-55C8-4EFC-B435-A95CDABE32A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DB936C-55C8-4EFC-B435-A95CDABE32A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DB936C-55C8-4EFC-B435-A95CDABE32A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DB936C-55C8-4EFC-B435-A95CDABE32A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC} = {57E25B0C-BD0F-43B7-AAB4-4879ADE41D18}
-		{24AABD89-C1B4-4067-9900-2498CDD235A8} = {4D501673-769F-42DD-9052-7D3FF50B257A}
 		{F21C6152-1824-41E7-BF22-E1C7D90FB457} = {45831A0C-6D02-4DAA-A145-BA965992C2C9}
 		{B2815437-03CD-4152-BBC0-828A3662998A} = {C4100FC6-9C48-463F-9EDB-92276E562263}
 		{852E7046-F153-4261-B2F9-68019E9DF99F} = {C4100FC6-9C48-463F-9EDB-92276E562263}
 		{9CB3FEE0-1638-4269-B951-6F2EBC94F631} = {FEB709D7-5E62-43E1-9274-108A4BB6EF3B}
 		{430016E0-9A36-49B0-A523-B039B5068CAA} = {9595A941-D484-4B04-9ECC-04787553903D}
+		{451B78CF-D559-487A-B1AB-1FE86A82C658} = {4D501673-769F-42DD-9052-7D3FF50B257A}
+		{F49BCD07-47D9-4E8D-A94D-F1CF66861A4C} = {4D501673-769F-42DD-9052-7D3FF50B257A}
+		{71DB936C-55C8-4EFC-B435-A95CDABE32A8} = {9595A941-D484-4B04-9ECC-04787553903D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D0676B0-7121-4555-96E7-8BE4CD22DE92}

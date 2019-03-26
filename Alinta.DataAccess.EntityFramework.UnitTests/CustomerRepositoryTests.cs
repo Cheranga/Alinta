@@ -55,16 +55,15 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             // Arrange
             //
             var customerRepository = await GetCustomerRepository();
+            
             await customerRepository.CreateCustomerAsync(new Customer
             {
-                Id = 1,
-                FirstName = "john",
+                FirstName = "JOHN",
                 LastName = "snow",
                 DateOfBirth = new DateTime(1982, 11, 1)
             });
             await customerRepository.CreateCustomerAsync(new Customer
             {
-                Id = 2,
                 FirstName = "little",
                 LastName = "john",
                 DateOfBirth = new DateTime(1982, 11, 1)
@@ -77,7 +76,6 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             // Assert
             //
             Assert.True(result.Status && result.Data.Count == 2);
-
         }
 
         [Fact]
@@ -89,7 +87,6 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             var customerRepository = await GetCustomerRepository();
             await customerRepository.CreateCustomerAsync(new Customer
             {
-                Id = 1,
                 FirstName = "aaa",
                 LastName = "hatangala",
                 DateOfBirth = new DateTime(1982, 11, 1)
@@ -116,7 +113,7 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             // Act
             //
-            var result = await customerRepository.DeleteCustomerAsync(0);
+            var result = await customerRepository.DeleteCustomerAsync(null);
             //
             // Assert
             //
@@ -133,7 +130,7 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             // Act
             //
-            var result = await customerRepository.DeleteCustomerAsync(100);
+            var result = await customerRepository.DeleteCustomerAsync(Guid.Empty.ToString());
             //
             // Assert
             //
@@ -146,10 +143,11 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             // Arrange
             //
+            var guid = Guid.NewGuid().ToString();
             var customerRepository = await GetCustomerRepository();
             await customerRepository.CreateCustomerAsync(new Customer
             {
-                Id = 1,
+                Id = guid,
                 FirstName = "Cheranga",
                 LastName = "Hatangala",
                 DateOfBirth = new DateTime(1982, 11, 1)
@@ -157,7 +155,7 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             // Act
             //
-            var result = await customerRepository.DeleteCustomerAsync(1);
+            var result = await customerRepository.DeleteCustomerAsync(guid);
             //
             // Assert
             //
@@ -176,7 +174,6 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             var result = await customerRepository.UpdateCustomerAsync(new Customer
             {
-                Id = 1,
                 FirstName = "Cheranga",
                 LastName = "Hatangala",
                 DateOfBirth = new DateTime(1982, 11, 1)
@@ -194,23 +191,24 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             // Arrange
             //
             var customerRepository = await GetCustomerRepository();
-            await customerRepository.CreateCustomerAsync(new Customer
+            var originalJohnConnor = new Customer
             {
-                Id = 1,
                 FirstName = "John",
                 LastName = "Terminator",
                 DateOfBirth = new DateTime(2000, 1, 1)
-            });
-            //
-            // Act
-            //
-            var result = await customerRepository.UpdateCustomerAsync(new Customer
+            };
+            var theUpdatedJohnConnor = new Customer
             {
-                Id = 1,
+                Id = originalJohnConnor.Id,
                 FirstName = "Cheranga",
                 LastName = "Hatangala",
                 DateOfBirth = new DateTime(1982, 11, 1)
-            });
+            };
+            await customerRepository.CreateCustomerAsync(originalJohnConnor);
+            //
+            // Act
+            //
+            var result = await customerRepository.UpdateCustomerAsync(theUpdatedJohnConnor);
             //
             // Assert
             //
@@ -256,7 +254,6 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             var customerRepository = await GetCustomerRepository();
             var customer = new Customer
             {
-                Id = 1,
                 FirstName = "Cheranga",
                 LastName = "Hatangala",
                 DateOfBirth = new DateTime(1982, 11, 1)
@@ -270,9 +267,7 @@ namespace Alinta.DataAccess.EntityFramework.UnitTests
             //
             Assert.True(result.Status);
 
-            var getCustomerOperation = await customerRepository.GetCustomersByNameAsync("Cheranga");
-            Assert.True(getCustomerOperation.Status);
-            Assert.Same("Cheranga", getCustomerOperation.Data.First().FirstName);
+            Assert.NotNull(result.Data?.Id);
         }
     }
 }

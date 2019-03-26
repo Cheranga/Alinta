@@ -35,10 +35,10 @@ namespace Alinta.DataAccess.EntityFramework.Repositories
             try
             {
                 var filteredCustomers = await _context.Customers.AsNoTracking()
-                    .Where(x => x.FirstName == search || x.LastName == search)
+                    .Where(x=> EF.Functions.Like(x.FirstName,search) || EF.Functions.Like(x.LastName, search))
                     .ToListAsync().ConfigureAwait(false);
 
-                result = OperationResult<List<Customer>>.Success(filteredCustomers);
+                result = OperationResult<List<Customer>>.Success(filteredCustomers?? new List<Customer>());
             }
             catch (Exception exception)
             {
@@ -50,35 +50,34 @@ namespace Alinta.DataAccess.EntityFramework.Repositories
             return result;
         }
 
-        public async Task<OperationResult> CreateCustomerAsync(Customer customer)
+        public async Task<OperationResult<Customer>> CreateCustomerAsync(Customer customer)
         {
             if (!customer.Validate())
             {
                 _logger.LogError($"Error: Invalid customer");
-                return OperationResult.Failure("Error: Invalid customer");
+                return OperationResult<Customer>.Failure("Error: Invalid customer");
             }
 
-            OperationResult result;
+            OperationResult<Customer> result;
             try
             {
                 await _context.Customers.AddAsync(customer).ConfigureAwait(false);
                 await _context.SaveChangesAsync().ConfigureAwait(false);
 
-
-                result = OperationResult.Success();
+                result = OperationResult<Customer>.Success(customer);
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception, "Error: Cannot create customer");
-                result = OperationResult.Failure("Cannot create customer");
+                result = OperationResult<Customer>.Failure("Cannot create customer");
             }
 
             return result;
         }
 
-        public async Task<OperationResult> DeleteCustomerAsync(int id)
+        public async Task<OperationResult> DeleteCustomerAsync(string id)
         {
-            if (id <= 0)
+            if (string.IsNullOrWhiteSpace(id))
             {
                 return OperationResult.Failure($"Error: Invalid id {id}");
             }
@@ -108,20 +107,20 @@ namespace Alinta.DataAccess.EntityFramework.Repositories
             return result;
         }
 
-        public async Task<OperationResult> UpdateCustomerAsync(Customer customer)
+        public async Task<OperationResult<Customer>> UpdateCustomerAsync(Customer customer)
         {
-            if (customer == null || customer.Id <= 0)
+            if (customer == null)
             {
-                return OperationResult.Failure("Error: Invalid customer cannot update");
+                return OperationResult<Customer>.Failure("Error: Invalid customer cannot update");
             }
 
-            OperationResult result;
+            OperationResult<Customer> result;
             try
             {
                 var existingCustomer = await _context.Customers.SingleOrDefaultAsync(x => x.Id == customer.Id).ConfigureAwait(false);
                 if (existingCustomer == null)
                 {
-                    result = OperationResult.Failure($"Error: Cannot update customer, customer does not exist");
+                    result = OperationResult<Customer>.Failure($"Error: Cannot update customer, customer does not exist");
                 }
                 else
                 {
@@ -131,13 +130,13 @@ namespace Alinta.DataAccess.EntityFramework.Repositories
 
                     await _context.SaveChangesAsync();
 
-                    result = OperationResult.Success();
+                    result = OperationResult<Customer>.Success(existingCustomer);
                 }
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception, "Error: Invalid customer cannot update");
-                result = OperationResult.Failure("Error: Invalid customer cannot update");
+                result = OperationResult<Customer>.Failure("Error: Invalid customer cannot update");
             }
 
             return result;

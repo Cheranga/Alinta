@@ -8,8 +8,8 @@ namespace Alinta.DataAccess.Abstractions.Repositories
     public interface ICustomerRepository
     {
         Task<OperationResult<List<Customer>>> GetCustomersByNameAsync(string search);
-        Task<OperationResult> CreateCustomerAsync(Customer customer);
-        Task<OperationResult> DeleteCustomerAsync(int id);
-        Task<OperationResult> UpdateCustomerAsync(Customer customer);
+        Task<OperationResult<Customer>> CreateCustomerAsync(Customer customer);
+        Task<OperationResult> DeleteCustomerAsync(string id);
+        Task<OperationResult<Customer>> UpdateCustomerAsync(Customer customer);
     }
 }

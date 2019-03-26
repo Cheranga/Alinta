@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Alinta.DataAccess.EntityFramework\Alinta.DataAccess.EntityFramework.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alinta.DataAccess.Abstractions\Alinta.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\Alinta.Services.Abstractions\Alinta.Services.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
