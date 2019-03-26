@@ -9,5 +9,7 @@ namespace Alinta.DataAccess.Abstractions.Repositories
     {
         Task<OperationResult<List<Customer>>> GetCustomersByNameAsync(string search);
         Task<OperationResult> CreateCustomerAsync(Customer customer);
+        Task<OperationResult> DeleteCustomerAsync(int id);
+        Task<OperationResult> UpdateCustomerAsync(Customer customer);
     }
 }

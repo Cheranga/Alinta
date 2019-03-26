@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.Core", "Alinta.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alinta.DataAccess.EntityFramework.UnitTests", "Alinta.DataAccess.EntityFramework.UnitTests\Alinta.DataAccess.EntityFramework.UnitTests.csproj", "{430016E0-9A36-49B0-A523-B039B5068CAA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{57E25B0C-BD0F-43B7-AAB4-4879ADE41D18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{AED72843-BD5D-4C6A-8237-5B6BD353E5CC} = {57E25B0C-BD0F-43B7-AAB4-4879ADE41D18}
 		{24AABD89-C1B4-4067-9900-2498CDD235A8} = {4D501673-769F-42DD-9052-7D3FF50B257A}
 		{F21C6152-1824-41E7-BF22-E1C7D90FB457} = {45831A0C-6D02-4DAA-A145-BA965992C2C9}
 		{B2815437-03CD-4152-BBC0-828A3662998A} = {C4100FC6-9C48-463F-9EDB-92276E562263}
