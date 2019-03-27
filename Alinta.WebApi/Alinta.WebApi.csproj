@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Alinta.Facade\Alinta.Facade.csproj" />
+    <ProjectReference Include="..\Alinta.Services.Abstractions\Alinta.Services.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
