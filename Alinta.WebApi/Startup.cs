@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Alinta.WebApi
 {
@@ -28,6 +29,13 @@ namespace Alinta.WebApi
         {
             services.UseAlintaFacade();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //
+            // Setup swagger
+            //
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Alinta API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +51,14 @@ namespace Alinta.WebApi
             }
 
             app.UseHttpsRedirection();
+            //
+            // Use swagger
+            //
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Alinta API V1");
+            });
             app.UseMvc();
         }
     }
