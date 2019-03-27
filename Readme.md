@@ -38,6 +38,16 @@ This contains the unit tests which are specific to the data access layer. As ins
 - [x] The solution is hosted in GitHub.
 - [x] Automatic CI/CD pipelines have been set to the `master` branch through `Azure DevOps`
 
+Two separate CI/CD pipelines have been configured (just for kicks!)
+* A CI/CD pipeline will build and deploy the web API as an `Azure Web App`
+
+
+* A CI/CD pipeline will build the code then will create a docker image and pushes it to Docker Hub. Then it will use that image to host the web API as an `Azure Web App for Containers`.
+
+
+ 
+The latter builds a docker image and pushes
+
 ## Deployments
 
 - [x] Azure Web App
