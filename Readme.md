@@ -45,7 +45,7 @@ The API has been deployed in `Azure Web App` and, can be seen by visiting https:
 - [x] Using Docker
 
 A docker image has been created for this API and it's also deployed as an `Azure Web App for Containers`. 
-The docker image can be found by visiting think [link]("https://hub.docker.com/r/cheranga/alintaapi")
+The docker image can be found by visiting this link https://hub.docker.com/r/cheranga/alintaapi
 
 This can be seen by visiting https://alintadockerapi.azurewebsites.net/index.html
 
