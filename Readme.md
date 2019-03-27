@@ -50,4 +50,4 @@ The docker image can be found by visiting this link https://hub.docker.com/r/che
 This can be seen by visiting https://alintadockerapi.azurewebsites.net/index.html
 
 ## Notes
-* Case insensitive search in EF core answer was found in [here]("https://stackoverflow.com/questions/43277868/entity-framework-core-contains-is-case-sensitive-or-case-insensitive")
+* Case insensitive search in EF core answer was found in https://stackoverflow.com/questions/43277868/entity-framework-core-contains-is-case-sensitive-or-case-insensitive
