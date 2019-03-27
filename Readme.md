@@ -17,7 +17,7 @@ In here clean/onion architecture based design is used.
 
 * Project Structure
 
-![Project Structure](./Images/Dependencies Graph.png?raw=true)
+![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Dependencies%20Graph.png "Project Structure")
 
 ## Tests
 You can find the unit tests in the below mentioned projects,
@@ -36,14 +36,16 @@ This contains the unit tests which are specific to the data access layer. As ins
 
 ## Deployments
 
-- [x] [Azure Web App]("https://alintaapi.azurewebsites.net/index.html")
+- [x] Azure Web App
 
-The API has been deployed in `Azure Web App`
+The API has been deployed in `Azure Web App` and, can be seen by visiting https://alintaapi.azurewebsites.net/index.html
 
-- [x] [Using Docker]("https://alintadockerapi.azurewebsites.net/index.html")
+- [x] Using Docker
 
 A docker image has been created for this API and it's also deployed as an `Azure Web App for Containers`. 
 The docker image can be found by visiting think [link]("https://hub.docker.com/r/cheranga/alintaapi")
+
+This can be seen by visiting https://alintadockerapi.azurewebsites.net/index.html
 
 ## Notes
 * Case insensitive search in EF core answer was found in [here]("https://stackoverflow.com/questions/43277868/entity-framework-core-contains-is-case-sensitive-or-case-insensitive")
