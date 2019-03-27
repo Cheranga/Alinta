@@ -43,6 +43,8 @@ Two separate CI/CD pipelines have been configured (just for kicks!)
 
 ![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Azure%20DevOps%20Pipeline%20to%20Publish%20to%20Azure%20Web%20App.png "CI/CD Approach 1")
 
+![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Release%20Pipeline.png "Release Pipeline")
+
 * A CI/CD pipeline will build the code then will create a docker image and pushes it to Docker Hub. Then it will use that image to host the web API as an `Azure Web App for Containers`.
 
 ![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Azure%20DevOps%20Pipeline%20to%20Publish%20to%20Azure%20Web%20App%20for%20Containers.png "CI/CD Approach 2")
