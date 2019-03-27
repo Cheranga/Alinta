@@ -9,7 +9,9 @@
 
 ## Documentation
 
-The documentation of the API can be found in [here]("https://alintaapi.azurewebsites.net/index.html")
+The documentation of the API can be found in,
+* https://alintaapi.azurewebsites.net/index.html
+* https://alintadockerapi.azurewebsites.net/index.html
 
 ## Design and Architecture
 
@@ -31,8 +33,8 @@ This contains the unit tests which are specific to the services used.
 This contains the unit tests which are specific to the data access layer. As instructed in here it's using entity framework with an in-memory database.
 
 ## CI and CD
-- [x] The solution is hosted in GitHub and can be seen by visiting this [link]("https://github.com/Cheranga/Alinta")
-- [x] Automatic CI/CD pipelines have been set to the `master` branch
+- [x] The solution is hosted in GitHub.
+- [x] Automatic CI/CD pipelines have been set to the `master` branch through `Azure DevOps`
 
 ## Deployments
 
