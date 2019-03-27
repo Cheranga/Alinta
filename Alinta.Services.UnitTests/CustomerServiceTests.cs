@@ -263,6 +263,70 @@ namespace Alinta.Services.UnitTests
 
         #endregion
 
+        #region Delete Customer
+
+        [Fact]
+        public async Task If_Invalid_Request_Is_Sent_Cannot_Delete_Customer()
+        {
+            //
+            // Arrange
+            //
+            var customerService = GetCustomerService();
+            var emptyRequest = new DeleteCustomerRequest(string.Empty);
+            var nullIdRequest = new DeleteCustomerRequest(null);
+            DeleteCustomerRequest nullRequest = null;
+            //
+            // Act
+            //
+            var tasks = new[] {emptyRequest, nullIdRequest, nullRequest}.Select(x => customerService.DeleteCustomerAsync(x));
+            var operationResults = await Task.WhenAll(tasks);
+            //
+            // Assert
+            //
+            Assert.False(operationResults.All(x=>x.Status));
+
+        }
+
+        [Fact]
+        public async Task An_Existing_Customer_Can_Be_Deleted()
+        {
+            //
+            // Arrange
+            //
+            var mockedCustomerRepository=new Mock<ICustomerRepository>();
+            mockedCustomerRepository.Setup(x => x.DeleteCustomerAsync(It.IsAny<string>())).ReturnsAsync(OperationResult.Success);
+            var customerService = new CustomerService(mockedCustomerRepository.Object, Mock.Of<ILogger<CustomerService>>());
+            //
+            // Act
+            //
+            var result = await customerService.DeleteCustomerAsync(new DeleteCustomerRequest("cheranga"));
+            //
+            // Assert
+            //
+            Assert.True(result.Status);
+        }
+
+        [Fact]
+        public async Task Deleting_Customers_Who_Are_Not_In_System_Must_Fail()
+        {
+            //
+            // Arrange
+            //
+            var mockedCustomerRepository = new Mock<ICustomerRepository>();
+            mockedCustomerRepository.Setup(x => x.DeleteCustomerAsync(It.IsAny<string>())).ReturnsAsync(OperationResult.Failure);
+            var customerService = new CustomerService(mockedCustomerRepository.Object, Mock.Of<ILogger<CustomerService>>());
+            //
+            // Act
+            //
+            var result = await customerService.DeleteCustomerAsync(new DeleteCustomerRequest("cheranga"));
+            //
+            // Assert
+            //
+            Assert.False(result.Status);
+        }
+
+        #endregion
+
 
     }
 }

@@ -65,9 +65,23 @@ namespace Alinta.Services
             return OperationResult<UpdateCustomerResponse>.Success(new UpdateCustomerResponse(displayCustomer));
         }
 
-        public Task<OperationResult<DeleteCustomerResponse>> DeleteCustomerAsync(DeleteCustomerRequest request)
+        public async Task<OperationResult<DeleteCustomerResponse>> DeleteCustomerAsync(DeleteCustomerRequest request)
         {
-            throw new NotImplementedException();
+            var isValid = request.Validate();
+            if (!isValid)
+            {
+                _logger.LogError($"Error. Invalid request: {JsonConvert.SerializeObject(request)}");
+                return OperationResult<DeleteCustomerResponse>.Failure("Invalid request");
+            }
+
+            var operationResult = await _customerRepository.DeleteCustomerAsync(request.CustomerId).ConfigureAwait(false);
+            if (!operationResult.Status)
+            {
+                _logger.LogError($"Error: {operationResult.Message}");
+                return OperationResult<DeleteCustomerResponse>.Failure("Cannot delete customer, error occured");
+            }
+
+            return OperationResult<DeleteCustomerResponse>.Success(new DeleteCustomerResponse(request.CustomerId));
         }
 
         public async Task<OperationResult<SearchCustomersResponse>> SearchCustomersAsync(SearchCustomersRequest request)

@@ -4,11 +4,11 @@ namespace Alinta.Services.Abstractions.Responses
 {
     public class DeleteCustomerResponse
     {
-        public CustomerDisplayModel Customer { get; }
+        public string CustomerId { get; }
 
-        public DeleteCustomerResponse(CustomerDisplayModel customer)
+        public DeleteCustomerResponse(string customerId)
         {
-            Customer = customer;
+            CustomerId = customerId;
         }
     }
 }

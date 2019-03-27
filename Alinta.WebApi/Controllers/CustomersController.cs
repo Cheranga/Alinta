@@ -5,13 +5,13 @@ using System.Net;
 using System.Threading.Tasks;
 using Alinta.Core;
 using Alinta.Services.Abstractions.Interfaces;
-using Alinta.Services.Abstractions.Requests;
 using Alinta.WebApi.DTO.Requests;
 using Alinta.WebApi.DTO.Responses;
 using Alinta.WebApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CreateCustomerRequest = Alinta.WebApi.DTO.Requests.CreateCustomerRequest;
+using DeleteCustomerRequest = Alinta.Services.Abstractions.Requests.DeleteCustomerRequest;
 
 namespace Alinta.WebApi.Controllers
 {
@@ -59,6 +59,19 @@ namespace Alinta.WebApi.Controllers
             var displayDto = operationResult.Data.Customer.ToDisplayDto();
             return Ok(new CreateCustomerResponse(displayDto));
 
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] Alinta.WebApi.DTO.Requests.DeleteCustomerRequest request)
+        {
+            var operationResult = await _customerService.DeleteCustomerAsync(request.ToServiceRequest()).ConfigureAwait(false);
+            if (!operationResult.Status)
+            {
+                _logger.LogError($"Error: Cannot delete customer");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+
+            return Ok(new MessageResponse($"Successfully deleted customer: {operationResult.Data.CustomerId}"));
         }
     }
 }

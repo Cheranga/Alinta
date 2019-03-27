@@ -28,5 +28,15 @@ namespace Alinta.WebApi.Extensions
 
             return new SearchCustomersRequest(request.Name);
         }
+
+        public static DeleteCustomerRequest ToServiceRequest(this DTO.Requests.DeleteCustomerRequest request)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+
+            return new DeleteCustomerRequest(request.CustomerId);
+        }
     }
 }
