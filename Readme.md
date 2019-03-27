@@ -41,12 +41,13 @@ This contains the unit tests which are specific to the data access layer. As ins
 Two separate CI/CD pipelines have been configured (just for kicks!)
 * A CI/CD pipeline will build and deploy the web API as an `Azure Web App`
 
+![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Azure%20DevOps%20Pipeline%20to%20Publish%20to%20Azure%20Web%20App.png "CI/CD Approach 1")
 
 * A CI/CD pipeline will build the code then will create a docker image and pushes it to Docker Hub. Then it will use that image to host the web API as an `Azure Web App for Containers`.
 
-
+![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Azure%20DevOps%20Pipeline%20to%20Publish%20to%20Azure%20Web%20App%20for%20Containers.png "CI/CD Approach 2")
  
-The latter builds a docker image and pushes
+
 
 ## Deployments
 
