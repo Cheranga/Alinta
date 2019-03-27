@@ -17,7 +17,7 @@ In here clean/onion architecture based design is used.
 
 * Project Structure
 
-![](Images/Dependencies Graph.png?raw=true)
+![]("Images/Dependencies Graph.png?raw=true")
 
 ## Tests
 You can find the unit tests in the below mentioned projects,
