@@ -2,12 +2,14 @@
 using System.Net;
 using System.Threading.Tasks;
 using Alinta.Services.Abstractions.Interfaces;
+using Alinta.Services.Abstractions.Responses;
 using Alinta.WebApi.DTO.Requests;
-using Alinta.WebApi.DTO.Responses;
 using Alinta.WebApi.Extensions;
+using Alinta.WebApi.Presenters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CreateCustomerRequest = Alinta.WebApi.DTO.Requests.CreateCustomerRequest;
+using CreateCustomerResponse = Alinta.WebApi.DTO.Responses.CreateCustomerResponse;
 
 namespace Alinta.WebApi.Controllers
 {
@@ -16,11 +18,24 @@ namespace Alinta.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
+        private readonly IOperationResultPresenter<Services.Abstractions.Responses.CreateCustomerResponse> _createCustomerResponsePresenter;
+        private readonly IOperationResultPresenter<SearchCustomersResponse> _searchCustomerResponsePresenter;
+        private readonly IOperationResultPresenter<UpdateCustomerResponse> _updateCustomerResponsePresenter;
+        private readonly IOperationResultPresenter<DeleteCustomerResponse> _deleteCustomerResponsePresenter;
         private readonly ILogger<CustomersController> _logger;
 
-        public CustomersController(ICustomerService customerService, ILogger<CustomersController> logger)
+
+        public CustomersController(ICustomerService customerService, IOperationResultPresenter<Services.Abstractions.Responses.CreateCustomerResponse> createCustomerResponsePresenter,
+            IOperationResultPresenter<SearchCustomersResponse> searchCustomerResponsePresenter,
+            IOperationResultPresenter<UpdateCustomerResponse> updateCustomerResponsePresenter,
+            IOperationResultPresenter<DeleteCustomerResponse> deleteCustomerResponsePresenter,
+            ILogger<CustomersController> logger)
         {
             _customerService = customerService;
+            _createCustomerResponsePresenter = createCustomerResponsePresenter;
+            _searchCustomerResponsePresenter = searchCustomerResponsePresenter;
+            _updateCustomerResponsePresenter = updateCustomerResponsePresenter;
+            _deleteCustomerResponsePresenter = deleteCustomerResponsePresenter;
             _logger = logger;
         }
 
@@ -31,15 +46,10 @@ namespace Alinta.WebApi.Controllers
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot search for customers");
-                return StatusCode((int) HttpStatusCode.InternalServerError, "Cannot search for customers");
             }
 
-            if (!operationResult.Data.Customers.Any())
-            {
-                return NotFound($"There are no customers matching with : {request.Name}");
-            }
-            var displayDtos = operationResult.Data.Customers.Select(x => x.ToDisplayDto());
-            return Ok(new SearchCustomerResponse(displayDtos));
+            var actionResult = _searchCustomerResponsePresenter.Handle(operationResult);
+            return actionResult;
         }
 
         [HttpPost]
@@ -49,11 +59,11 @@ namespace Alinta.WebApi.Controllers
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot create customer");
-                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot create customer");
             }
 
-            var displayDto = operationResult.Data.Customer.ToDisplayDto();
-            return Ok(new CreateCustomerResponse(displayDto));
+            var actionResult = _createCustomerResponsePresenter.Handle(operationResult);
+
+            return actionResult;
 
         }
 
@@ -64,11 +74,10 @@ namespace Alinta.WebApi.Controllers
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot update customer");
-                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot update customer");
             }
 
-            var displayDto = operationResult.Data.Customer.ToDisplayDto();
-            return Ok(new UpdateCustomerResponse(displayDto));
+            var actionResult = _updateCustomerResponsePresenter.Handle(operationResult);
+            return actionResult;
         }
 
         [HttpDelete]
@@ -78,10 +87,10 @@ namespace Alinta.WebApi.Controllers
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot delete customer");
-                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot delete customer");
             }
 
-            return Ok(new MessageResponse($"Successfully deleted customer: {operationResult.Data.CustomerId}"));
+            var actionResult = _deleteCustomerResponsePresenter.Handle(operationResult);
+            return actionResult;
         }
     }
 }
