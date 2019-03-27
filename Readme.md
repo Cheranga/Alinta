@@ -21,7 +21,7 @@ In here clean/onion architecture based design is used.
 
 * Project Structure
 
-![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Dependencies%20Graph.png "Project Structure")
+![alt text](https://github.com/Cheranga/Alinta/blob/master/Images/Dependencies%20Graph_V2.png "Project Structure")
 
 ## Tests
 You can find the unit tests in the below mentioned projects,
