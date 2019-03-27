@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/cchatangala/Alinta/_apis/build/status/Alinta%20-%20PROD%20-%20CI?branchName=master)](https://dev.azure.com/cchatangala/Alinta/_build/latest?definitionId=22&branchName=master)
+
 # Alinta API
 
 ## API Functionalities
