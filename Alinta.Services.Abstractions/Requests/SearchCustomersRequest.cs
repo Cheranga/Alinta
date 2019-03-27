@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Alinta.Core;
+﻿using Alinta.Core;
 
 namespace Alinta.Services.Abstractions.Requests
 {

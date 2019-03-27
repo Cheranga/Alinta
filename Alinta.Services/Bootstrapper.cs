@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Alinta.DataAccess.EntityFramework;
 using Alinta.Services.Abstractions.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +12,8 @@ namespace Alinta.Services
             // Register dependencies in here
             //
             services.AddScoped<ICustomerService, CustomerService>();
+            
+            services.UseAlintaDataAccess();
         }
     }
 }

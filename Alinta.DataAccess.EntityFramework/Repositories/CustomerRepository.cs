@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Alinta.Core;
 using Alinta.DataAccess.Abstractions.Repositories;
@@ -109,7 +108,7 @@ namespace Alinta.DataAccess.EntityFramework.Repositories
 
         public async Task<OperationResult<Customer>> UpdateCustomerAsync(Customer customer)
         {
-            if (customer == null)
+            if (!customer.Validate())
             {
                 return OperationResult<Customer>.Failure("Error: Invalid customer cannot update");
             }

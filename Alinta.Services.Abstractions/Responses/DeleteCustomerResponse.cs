@@ -1,6 +1,4 @@
-﻿using Alinta.Services.Abstractions.Models;
-
-namespace Alinta.Services.Abstractions.Responses
+﻿namespace Alinta.Services.Abstractions.Responses
 {
     public class DeleteCustomerResponse
     {

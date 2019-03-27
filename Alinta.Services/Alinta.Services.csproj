@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Alinta.DataAccess.Abstractions\Alinta.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\Alinta.DataAccess.EntityFramework\Alinta.DataAccess.EntityFramework.csproj" />
     <ProjectReference Include="..\Alinta.Services.Abstractions\Alinta.Services.Abstractions.csproj" />
   </ItemGroup>
 

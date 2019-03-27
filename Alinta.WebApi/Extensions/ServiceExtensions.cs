@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alinta.Services.Abstractions.Models;
+﻿using Alinta.Services.Abstractions.Models;
 using Alinta.Services.Abstractions.Requests;
+using Microsoft.AspNetCore.Authentication.Twitter;
 
 namespace Alinta.WebApi.Extensions
 {
@@ -37,6 +34,16 @@ namespace Alinta.WebApi.Extensions
             }
 
             return new DeleteCustomerRequest(request.CustomerId);
+        }
+
+        public static UpdateCustomerRequest ToServiceRequest(this DTO.Requests.UpdateCustomerRequest request)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+
+            return new UpdateCustomerRequest(new CustomerUpdateModel(request.Id, request.FirstName, request.LastName, request.DateOfBirth));
         }
     }
 }

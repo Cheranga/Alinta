@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Alinta.DataAccess.Abstractions.Repositories;
+﻿using Alinta.DataAccess.Abstractions.Repositories;
 using Alinta.DataAccess.EntityFramework.Contexts;
 using Alinta.DataAccess.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;

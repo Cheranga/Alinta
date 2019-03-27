@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Alinta.Services.Abstractions.Models;
 using Alinta.WebApi.Models;
 
 namespace Alinta.WebApi.DTO.Responses

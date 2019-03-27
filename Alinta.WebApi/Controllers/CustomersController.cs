@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Alinta.Core;
 using Alinta.Services.Abstractions.Interfaces;
 using Alinta.WebApi.DTO.Requests;
 using Alinta.WebApi.DTO.Responses;
@@ -11,7 +8,6 @@ using Alinta.WebApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CreateCustomerRequest = Alinta.WebApi.DTO.Requests.CreateCustomerRequest;
-using DeleteCustomerRequest = Alinta.Services.Abstractions.Requests.DeleteCustomerRequest;
 
 namespace Alinta.WebApi.Controllers
 {
@@ -53,7 +49,7 @@ namespace Alinta.WebApi.Controllers
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot create customer");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot create customer");
             }
 
             var displayDto = operationResult.Data.Customer.ToDisplayDto();
@@ -61,14 +57,28 @@ namespace Alinta.WebApi.Controllers
 
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] UpdateCustomerRequest request)
+        {
+            var operationResult = await _customerService.UpdateCustomerAsync(request.ToServiceRequest()).ConfigureAwait(false);
+            if (!operationResult.Status)
+            {
+                _logger.LogError($"Error: Cannot update customer");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot update customer");
+            }
+
+            var displayDto = operationResult.Data.Customer.ToDisplayDto();
+            return Ok(new UpdateCustomerResponse(displayDto));
+        }
+
         [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] Alinta.WebApi.DTO.Requests.DeleteCustomerRequest request)
+        public async Task<IActionResult> Delete([FromBody] DeleteCustomerRequest request)
         {
             var operationResult = await _customerService.DeleteCustomerAsync(request.ToServiceRequest()).ConfigureAwait(false);
             if (!operationResult.Status)
             {
                 _logger.LogError($"Error: Cannot delete customer");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Cannot delete customer");
             }
 
             return Ok(new MessageResponse($"Successfully deleted customer: {operationResult.Data.CustomerId}"));
